@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamar Digital Studio | Jasa CV Digital & Undangan Perkahwinan Digital</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                            accent: '#6366f1', // Indigo glow accent
+                        },
+                        dark: {
+                            bg: '#090d16',
+                            card: '#111827',
+                            border: '#1f2937',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism & Custom Glows */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(20, 184, 166, 0.3);
+        }
+        .glow-indigo {
+            box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.3);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #14b8a6;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-200 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Ambient Glow Backgrounds -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full filter blur-[120px] pointer-events-none animate-pulse-slow"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-brand-accent/10 rounded-full filter blur-[120px] pointer-events-none animate-pulse-slow"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-brand-accent flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/20">
+                        K
+                    </div>
+                    <span class="font-extrabold text-xl tracking-tight text-white">Kamar<span class="text-brand-400">Digital</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-brand-400 transition">Tentang Kami</a>
+                    <a href="#services" class="hover:text-brand-400 transition">Layanan</a>
+                    <a href="#portfolio" class="hover:text-brand-400 transition">Portofolio</a>
+                    <a href="#pricing" class="hover:text-brand-400 transition">Harga</a>
+                    <a href="#github-guide" class="hover:text-brand-400 transition text-indigo-400"><i class="fab font-normal fa-github mr-1"></i> Tutorial GitHub</a>
+                </div>
+
+                <!-- CTA Button Header -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#order-builder" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-500 shadow-md shadow-brand-500/20 transition hover:scale-105 active:scale-95">
+                        <i class="fab fa-whatsapp mr-1.5 text-base">="whatsapp"></i> Buat Pesanan
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Nav Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-gray-300 hover:text-brand-400">Tentang Kami</a>
+            <a href="#services" class="block py-2 text-gray-300 hover:text-brand-400">Layanan</a>
+            <a href="#portfolio" class="block py-2 text-gray-300 hover:text-brand-400">Portofolio</a>
+            <a href="#pricing" class="block py-2 text-gray-300 hover:text-brand-400">Harga</a>
+            <a href="#github-guide" class="block py-2 text-indigo-400 hover:text-indigo-300"><i class="fab fa-github mr-1"></i> Tutorial GitHub</a>
+            <a href="#order-builder" class="inline-block w-full text-center mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-brand-500 hover:bg-brand-600">
+                <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-brand-500/30 text-brand-400 text-xs sm:text-sm font-medium mb-8 animate-float">
+                <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+                Digital Creative Studio Modern & Professional
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                Ubah Profil & Momen Spesial Anda Menjadi <br class="hidden sm:inline">
+                <span class="bg-gradient-to-r from-brand-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
+                    Karya Digital Interaktif
+                </span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg md:text-xl leading-relaxed mb-10">
+                Kamar Digital Studio menghadirkan pembuatan **CV Digital ATS-Friendly** berkualitas profesional dan **Undangan Pernikahan Website** modern, elegan, serta responsif.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#order-builder" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-500 shadow-lg shadow-brand-500/25 transition hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl"></i> Order via WhatsApp
+                </a>
+                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-gray-300 glass-panel hover:bg-gray-800 hover:text-white transition flex items-center justify-center gap-2">
+                    <i class="fas fa-eye text-brand-400"></i> Lihat Portofolio
+                </a>
+            </div>
+
+            <!-- Highlights Banner -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="glass-panel p-4 rounded-2xl border border-gray-800">
+                    <h3 class="text-2xl font-bold text-brand-400">100%</h3>
+                    <p class="text-xs text-gray-400 mt-1">Responsif Mobile & Web</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl border border-gray-800">
+                    <h3 class="text-2xl font-bold text-brand-400">Fast</h3>
+                    <p class="text-xs text-gray-400 mt-1">Pengerjaan 1-3 Hari</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl border border-gray-800">
+                    <h3 class="text-2xl font-bold text-brand-400">ATS</h3>
+                    <p class="text-xs text-gray-400 mt-1">Format CV Standar HRD</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl border border-gray-800">
+                    <h3 class="text-2xl font-bold text-brand-400">Free</h3>
+                    <p class="text-xs text-gray-400 mt-1">Panduan GitHub Hosting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ABOUT US SECTION -->
+    <section id="about" class="py-20 bg-gray-950/50 border-t border-gray-800/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-md bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-wider">
+                        Tentang Kamar Digital Studio
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                        Solusi Kreatif Digital untuk Karier dan Acara Istimewa Anda
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        Kami adalah studio kreatif yang berfokus pada pengembangan produk web digital berbasis teknologi modern. Kamar Digital Studio hadir memberikan solusi praktis, estetis, dan terjangkau bagi para profesional yang membutuhkan **CV Web Interaktif** serta pasangan yang menginginkan **Undangan Pernikahan Digital berbasis Website**.
+                    </p>
+                    
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p class="text-sm text-gray-300"><strong class="text-white">Desain Eksklusif & Modern:</strong> Tampilan interaktif tanpa ribet yang mengesan pemirsa atau *recruiter*.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p class="text-sm text-gray-300"><strong class="text-white">Siap Hosting Gratis di GitHub:</strong> Kami memberikan file source code bersih yang dapat Anda upload langsung ke GitHub Pages.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <p class="text-sm text-gray-300"><strong class="text-white">Fitur Lengkap:</strong> Integrasi musik, Peta RSVP, Galeri Foto, serta Link Medsos & Portofolio lengkap.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Studio Feature Graphic Card -->
+                <div class="relative">
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-800 relative z-10 space-y-6">
+                        <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span class="text-xs text-gray-500 font-mono">kamardigital.studio</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 flex items-center gap-4">
+                                <i class="fas fa-file-invoice text-brand-400 text-2xl"></i>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm">CV Digital ATS Friendly</h4>
+                                    <p class="text-xs text-gray-400">Siap dilirik recruiter perusahaan ternama</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 flex items-center gap-4">
+                                <i class="fas fa-heart text-pink-400 text-2xl"></i>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm">Web Undangan Pernikahan</h4>
+                                    <p class="text-xs text-gray-400">Desain elegan, lengkap dengan musik & RSVP</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Background Glow Overlay -->
+                    <div class="absolute -inset-2 bg-gradient-to-r from-brand-500 to-indigo-500 rounded-3xl blur-2xl opacity-20 -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SERVICES OFFERED -->
+    <section id="services" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Layanan Unggulan Kami</h2>
+                <p class="text-gray-400">Diproses secara teliti dengan standar web modern untuk memberikan pengalaman terbaik bagi pengunjung Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service 1: Jasa CV Digital -->
+                <div class="glass-panel p-8 rounded-3xl border border-gray-800 hover:border-brand-500/50 transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Jasa CV Digital Interaktif</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        Tingkatkan peluang dipanggil wawancara kerja dengan Resume/CV Digital profesional yang interaktif dan ATS-friendly. Tampilkan proyek, keahlian, dan riwayat pengalaman secara menarik.
+                    </p>
+                    <ul class="space-y-2.5 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-400"></i> Format ATS-Friendly (Standar HRD)
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-400"></i> Integrasi Portofolio Proyek & Link Medsos
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-400"></i> Bebas Download PDF & Tautan Web Aktif
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-400"></i> Tampilan Elegan di Smartphone & PC
+                        </li>
+                    </ul>
+                    <a href="#order-builder" class="inline-flex items-center gap-2 text-brand-400 font-semibold text-sm hover:text-brand-300">
+                        Pesan CV Digital Sekarang <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: Jasa Undangan Digital Wedding -->
+                <div class="glass-panel p-8 rounded-3xl border border-gray-800 hover:border-brand-accent/50 transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Jasa Undangan Digital Web</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        Bagikan kabar bahagia Anda secara elegan dan praktis. Undangan berbasis website responsif dengan cerita cinta, galeri foto/video, RSVP, peta lokasi, hingga amplop digital.
+                    </p>
+                    <ul class="space-y-2.5 text-sm text-gray-300 mb-8">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-accent"></i> Background Musik Pilihan & Countdown Timer
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-accent"></i> Formulir RSVP / Konfirmasi Kehadiran Tamu
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-accent"></i> Integrasi Petunjuk Arah Google Maps
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-brand-accent"></i> Fitur Amplop Digital & Rekening Hadiah
+                        </li>
+                    </ul>
+                    <a href="#order-builder" class="inline-flex items-center gap-2 text-brand-accent font-semibold text-sm hover:text-indigo-300">
+                        Pesan Undangan Sekarang <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PORTFOLIO / TEMPLATE SHOWCASE -->
+    <section id="portfolio" class="py-20 bg-gray-950/50 border-t border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">Galeri Template & Portofolio</h2>
+                    <p class="text-gray-400 mt-2">Pilih gaya dan tema yang paling cocok untuk kebutuhan Anda</p>
+                </div>
+                <!-- Category Filter Buttons -->
+                <div class="flex gap-2 mt-6 md:mt-0 bg-gray-900 p-1.5 rounded-xl border border-gray-800">
+                    <button onclick="filterPortfolio('all')" class="portfolio-tab px-4 py-2 rounded-lg text-xs font-semibold text-white bg-brand-500 transition" id="tab-all">Semua</button>
+                    <button onclick="filterPortfolio('cv')" class="portfolio-tab px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition" id="tab-cv">CV Digital</button>
+                    <button onclick="filterPortfolio('wedding')" class="portfolio-tab px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition" id="tab-wedding">Undangan Digital</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Items Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- Item 1: CV Modern -->
+                <div class="portfolio-item cv glass-panel rounded-2xl overflow-hidden border border-gray-800 group">
+                    <div class="relative h-52 bg-gray-800 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80" alt="CV Template" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gray-950/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3">
+                            <button onclick="openPreviewModal('CV Professional Dark', 'Kombinasi tema gelap elegan dengan layout standar ATS untuk Software Engineer, Designer, dan Professional.', 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80')" class="p-3 bg-brand-500 rounded-full text-white hover:scale-110 transition">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-400 uppercase tracking-wider">CV Digital</span>
+                        <h3 class="text-lg font-bold text-white mt-1">CV Dark Professional</h3>
+                        <p class="text-xs text-gray-400 mt-2">Sangat cocok bagi IT, Creative, dan Tech Professional.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Undangan Elegant Gold -->
+                <div class="portfolio-item wedding glass-panel rounded-2xl overflow-hidden border border-gray-800 group">
+                    <div class="relative h-52 bg-gray-800 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Wedding Template" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gray-950/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3">
+                            <button onclick="openPreviewModal('Undangan Theme Gold Rustic', 'Tema pernikahan hangat dan romantis dilengkapi audio player, RSVP form, dan petunjuk lokasi Google Maps.', 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80')" class="p-3 bg-brand-accent rounded-full text-white hover:scale-110 transition">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-pink-400 uppercase tracking-wider">Undangan Digital</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Rustic Gold Romance</h3>
+                        <p class="text-xs text-gray-400 mt-2">Nuansa hangat, hangat, lengkap dengan RSVP & Musik.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: CV Minimalist White -->
+                <div class="portfolio-item cv glass-panel rounded-2xl overflow-hidden border border-gray-800 group">
+                    <div class="relative h-52 bg-gray-800 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="CV Template Minimalist" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gray-950/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3">
+                            <button onclick="openPreviewModal('CV Minimalist Clean', 'Layout bersih serba putih dengan fokus utama pada kejelasan pembacaan oleh sistem ATS dan Rekruter.', 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80')" class="p-3 bg-brand-500 rounded-full text-white hover:scale-110 transition">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-400 uppercase tracking-wider">CV Digital</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Minimalist Executive</h3>
+                        <p class="text-xs text-gray-400 mt-2">Layout bersih dan simpel untuk eksekutif & finansial.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Undangan Floral Pastel -->
+                <div class="portfolio-item wedding glass-panel rounded-2xl overflow-hidden border border-gray-800 group">
+                    <div class="relative h-52 bg-gray-800 overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Wedding Template Floral" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gray-950/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3">
+                            <button onclick="openPreviewModal('Undangan Modern Floral', 'Tampilan pastel modern nan lembut dengan animasi foto galeri dan fitur amplop digital.', 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80')" class="p-3 bg-brand-accent rounded-full text-white hover:scale-110 transition">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-pink-400 uppercase tracking-wider">Undangan Digital</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Modern Botanical Floral</h3>
+                        <p class="text-xs text-gray-400 mt-2">Estetik lembut dengan animasi transisi yang halus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PRICING / PACKAGES SECTION -->
+    <section id="pricing" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Paket Harga Hemat</h2>
+                <p class="text-gray-400 mt-2">Pilih paket terbaik sesuai kebutuhan karier atau momen pernikahan Anda</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plan 1: CV Digital Basic -->
+                <div class="glass-panel p-8 rounded-3xl border border-gray-800 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-brand-400 bg-brand-500/10 px-3 py-1 rounded-full">CV Digital</span>
+                        <h3 class="text-2xl font-bold text-white mt-4">Basic CV</h3>
+                        <p class="text-xs text-gray-400 mt-1">Solusi standar pencari kerja</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-extrabold text-white">Rp 49.000</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-400"></i> Format PDF ATS-Friendly</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-400"></i> Single-Page Responsive Web</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-400"></i> Maks. 2x Revisi</li>
+                            <li class="flex items-center gap-2 text-gray-500"><i class="fas fa-times"></i> Custom Domain</li>
+                        </ul>
+                    </div>
+                    <a href="#order-builder" class="mt-8 w-full py-3 rounded-xl font-semibold text-center text-white bg-gray-800 hover:bg-gray-700 transition">Pilih Paket</a>
+                </div>
+
+                <!-- Plan 2: CV & Web Bundle (POPULAR) -->
+                <div class="glass-panel p-8 rounded-3xl border-2 border-brand-500 relative flex flex-col justify-between glow-effect">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">Paling Populer</div>
+                    <div>
+                        <span class="text-xs font-semibold text-brand-400 bg-brand-500/10 px-3 py-1 rounded-full">CV + Web Host</span>
+                        <h3 class="text-2xl font-bold text-white mt-4">Pro Interactive CV</h3>
+                        <p class="text-xs text-gray-400 mt-1">Sangat disarankan untuk profesional</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-extrabold text-white">Rp 99.000</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-400"></i> Semuanya di Paket Basic</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-400"></i> Web Portofolio Interaktif</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-400"></i> Source Code Siap GitHub Pages</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-400"></i> Panduan Hosting Gratis</li>
+                        </ul>
+                    </div>
+                    <a href="#order-builder" class="mt-8 w-full py-3 rounded-xl font-semibold text-center text-white bg-brand-500 hover:bg-brand-600 transition shadow-lg shadow-brand-500/30">Pilih Paket</a>
+                </div>
+
+                <!-- Plan 3: Undangan Wedding Complete -->
+                <div class="glass-panel p-8 rounded-3xl border border-gray-800 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-pink-400 bg-pink-500/10 px-3 py-1 rounded-full">Undangan Digital</span>
+                        <h3 class="text-2xl font-bold text-white mt-4">Wedding Premium</h3>
+                        <p class="text-xs text-gray-400 mt-1">Undangan website lengkap & eksklusif</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-extrabold text-white">Rp 149.000</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400"></i> Web Responsive + Backsound Musik</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400"></i> Galeri Foto & Countdown Timer</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400"></i> Form RSVP & Amplop Digital</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400"></i> Siap Hosting Gratis di GitHub</li>
+                        </ul>
+                    </div>
+                    <a href="#order-builder" class="mt-8 w-full py-3 rounded-xl font-semibold text-center text-white bg-gray-800 hover:bg-gray-700 transition">Pilih Paket</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ORDER PROCESS & TESTIMONIALS -->
+    <section class="py-20 bg-gray-950/50 border-t border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Cara Pemesanan Mudah</h2>
+                <p class="text-gray-400 mt-2">Hanya butuh 4 langkah mudah untuk mewujudkan produk digital Anda</p>
+            </div>
+
+            <!-- Steps Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+                <div class="glass-panel p-6 rounded-2xl border border-gray-800 relative">
+                    <span class="text-3xl font-black text-brand-500/30 absolute top-4 right-4">01</span>
+                    <i class="fas fa-list-check text-2xl text-brand-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">Pilih Layanan</h4>
+                    <p class="text-xs text-gray-400 mt-2">Tentukan pilihan layanan CV Digital atau Web Undangan Pernikahan.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-gray-800 relative">
+                    <span class="text-3xl font-black text-brand-500/30 absolute top-4 right-4">02</span>
+                    <i class="fab fa-whatsapp text-2xl text-brand-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">Isi Formulir WA</h4>
+                    <p class="text-xs text-gray-400 mt-2">Gunakan generator di bawah untuk mengirim data awal melalui WhatsApp.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-gray-800 relative">
+                    <span class="text-3xl font-black text-brand-500/30 absolute top-4 right-4">03</span>
+                    <i class="fas fa-code text-2xl text-brand-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">Proses Pengerjaan</h4>
+                    <p class="text-xs text-gray-400 mt-2">Tim Kamar Digital mendesain dan mengelolanya dalam 1-3 hari kerja.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-gray-800 relative">
+                    <span class="text-3xl font-black text-brand-500/30 absolute top-4 right-4">04</span>
+                    <i class="fas fa-rocket text-2xl text-brand-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">Serah Terima & Host</h4>
+                    <p class="text-xs text-gray-400 mt-2">Dapatkan file siap pakai dan upload gratis ke platform GitHub Pages!</p>
+                </div>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="border-t border-gray-800/80 pt-16">
+                <h3 class="text-2xl font-bold text-white text-center mb-10">Apa Kata Klien Kami?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-panel p-6 rounded-2xl border border-gray-800">
+                        <div class="flex items-center gap-1 text-amber-400 text-xs mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">"CV Digital interaktif dari Kamar Digital Studio bikin saya dilirik HRD startup dalam kurun waktu kurang dari seminggu. Hasilnya profesional banget!"</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-xs">R</div>
+                            <div>
+                                <h5 class="text-xs font-bold text-white">Rian Prasetya</h5>
+                                <p class="text-[10px] text-gray-400">Software Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl border border-gray-800">
+                        <div class="flex items-center gap-1 text-amber-400 text-xs mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">"Undangan pernikahan web kami dipuji banyak tamu undangan! Praktis, musiknya responsif, dan petunjuk Google Maps sangat akurat."</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold text-xs">A</div>
+                            <div>
+                                <h5 class="text-xs font-bold text-white">Anisa & Dimas</h5>
+                                <p class="text-[10px] text-gray-400">Pasangan Pengantin</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl border border-gray-800">
+                        <div class="flex items-center gap-1 text-amber-400 text-xs mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">"Tutorial GitHub Pages yang diberikan sangat jelas. Saya yang tidak paham koding pun bisa memasang website sendiri!"</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">B</div>
+                            <div>
+                                <h5 class="text-xs font-bold text-white">Budi Santoso</h5>
+                                <p class="text-[10px] text-gray-400">Digital Marketer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. INTERACTIVE WHATSAPP ORDER GENERATOR -->
+    <section id="order-builder" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-gray-800 glow-effect">
+                <div class="text-center mb-8">
+                    <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Formulir Instan</span>
+                    <h2 class="text-3xl font-bold text-white mt-1">Format Pesanan WhatsApp Generator</h2>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-2">Pilih opsi di bawah untuk menyusun pesan WhatsApp otomatis ke tim admin kami.</p>
+                </div>
+
+                <form id="wa-form" onsubmit="sendWhatsAppOrder(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Nama Klien -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-2">Nama Lengkap Anda *</label>
+                            <input type="text" id="client-name" required placeholder="Contoh: Budi Pratama" class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition">
+                        </div>
+
+                        <!-- Pilihan Layanan -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-2">Layanan yang Dipilih *</label>
+                            <select id="service-type" onchange="updatePackageOptions()" class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition">
+                                <option value="CV Digital ATS & Web">CV Digital Interaktif</option>
+                                <option value="Undangan Digital Web">Undangan Pernikahan Digital</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Pilihan Paket -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-2">Paket Pilihan *</label>
+                            <select id="package-tier" class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition">
+                                <!-- Options dynamically injected -->
+                            </select>
+                        </div>
+
+                        <!-- Catatan Tambahan -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-2">Catatan/Permintaan Khusus</label>
+                            <input type="text" id="order-notes" placeholder="Contoh: Tema Dark, Tambah Fitur Portofolio Video" class="w-full bg-gray-900/90 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition">
+                        </div>
+                    </div>
+
+                    <!-- Button Submit -->
+                    <button type="submit" class="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-500 shadow-lg shadow-green-500/20 transition flex items-center justify-center gap-2 text-base">
+                        <i class="fab fa-whatsapp text-xl"></i> Kirim Pesanan via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. GITHUB PAGES DEPLOYMENT GUIDE SECTION -->
+    <section id="github-guide" class="py-20 bg-gray-950/80 border-t border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-semibold mb-3">
+                    <i class="fab fa-github"></i> Panduan Gratis Hosting
+                </div>
+                <h2 class="text-3xl font-bold text-white">Cara Upload Website ke GitHub Pages</h2>
+                <p class="text-sm text-gray-400 mt-2">Dapatkan link website Anda secara online (contoh: <em>namaanda.github.io</em>) tanpa biaya hosting selamanya!</p>
+            </div>
+
+            <!-- Accordion Steps -->
+            <div class="space-y-4">
+                <!-- Step 1 -->
+                <div class="glass-panel rounded-2xl border border-gray-800 p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm shrink-0">1</div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Buat Akun & Repository GitHub Baru</h3>
+                            <p class="text-xs text-gray-400 mt-1">Daftar di <a href="https://github.com" target="_blank" class="text-brand-400 underline">GitHub.com</a>, klik tombol tombol <strong>"New"</strong> untuk membuat repositori baru. Beri nama misal <code>cv-saya</code> atau <code>undangan-pernikahan</code>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-panel rounded-2xl border border-gray-800 p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm shrink-0">2</div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Upload File Kode HTML</h3>
+                            <p class="text-xs text-gray-400 mt-1">Pilih opsi <strong>"uploading an existing file"</strong>. Pastikan file kode utama Anda dinamai persis <code class="text-amber-300">index.html</code>, lalu klik <strong>"Commit Changes"</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-panel rounded-2xl border border-gray-800 p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm shrink-0">3</div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Aktifkan Fitur GitHub Pages</h3>
+                            <p class="text-xs text-gray-400 mt-1">Masuk ke menu tab <strong>Settings</strong> repositori &gt; Pilih menu <strong>Pages</strong> di bagian navigasi kiri. Pada opsi <em>Branch</em>, ubah dari <code>None</code> menjadi <code>main</code> (atau <code>master</code>) lalu klik <strong>Save</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-panel rounded-2xl border border-gray-800 p-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm shrink-0">4</div>
+                        <div>
+                            <h3 class="text-base font-bold text-white">Selesai & Bagikan Link Website!</h3>
+                            <p class="text-xs text-gray-400 mt-1">Tunggu sekitar 1–2 menit, GitHub akan memberikan URL live website Anda seperti <code>https://username.github.io/cv-saya</code> secara gratis!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-950 py-12 border-t border-gray-800/60 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-500 to-brand-accent flex items-center justify-center text-white font-bold text-sm">
+                    K
+                </div>
+                <span class="font-bold text-white text-base">Kamar Digital Studio</span>
+            </div>
+            <p>&copy; 2026 Kamar Digital Studio. All rights reserved. Built for Github Pages.</p>
+            <div class="flex gap-4 text-base">
+                <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TEMPLATE PREVIEW MODAL -->
+    <div id="preview-modal" class="fixed inset-0 z-50 hidden bg-gray-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel max-w-2xl w-full rounded-3xl border border-gray-800 overflow-hidden shadow-2xl">
+            <div class="p-4 border-b border-gray-800 flex items-center justify-between">
+                <h3 id="modal-title" class="font-bold text-white text-base">Preview Template</h3>
+                <button onclick="closePreviewModal()" class="text-gray-400 hover:text-white p-1">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="h-64 rounded-xl overflow-hidden bg-gray-900 border border-gray-800">
+                    <img id="modal-img" src="" alt="Preview" class="w-full h-full object-cover">
+                </div>
+                <p id="modal-desc" class="text-xs text-gray-300 leading-relaxed"></p>
+            </div>
+            <div class="p-4 border-t border-gray-800 flex justify-end gap-3">
+                <button onclick="closePreviewModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-gray-400 hover:text-white bg-gray-900">Tutup</button>
+                <a href="#order-builder" onclick="closePreviewModal()" class="px-5 py-2 rounded-xl text-xs font-semibold text-white bg-brand-500 hover:bg-brand-600">Pesan Template Ini</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dynamic Package Options depending on selected Service
+        function updatePackageOptions() {
+            const serviceType = document.getElementById('service-type').value;
+            const packageTier = document.getElementById('package-tier');
+            packageTier.innerHTML = '';
+
+            if (serviceType.includes('CV Digital')) {
+                packageTier.innerHTML = `
+                    <option value="Basic CV (Rp 49.000)">Basic CV - Rp 49.000</option>
+                    <option value="Pro Interactive CV (Rp 99.000)">Pro Interactive CV - Rp 99.000 (Terpopuler)</option>
+                `;
+            } else {
+                packageTier.innerHTML = `
+                    <option value="Wedding Premium (Rp 149.000)">Wedding Premium - Rp 149.000</option>
+                `;
+            }
+        }
+        // Initialize dynamic options
+        updatePackageOptions();
+
+        // WhatsApp Link Generator Script
+        function sendWhatsAppOrder(e) {
+            e.preventDefault();
+            const phoneNumber = '6281234567890'; // Ganti nomor WhatsApp Studio Anda di sini
+            
+            const name = document.getElementById('client-name').value;
+            const service = document.getElementById('service-type').value;
+            const packageChoice = document.getElementById('package-tier').value;
+            const notes = document.getElementById('order-notes').value || '-';
+
+            const message = `Halo Admin Kamar Digital Studio! 👋🏼%0A%0ASaya ingin memesan jasa pembuatan website dengan rincian:%0A• *Nama*: ${encodeURIComponent(name)}%0A• *Layanan*: ${encodeURIComponent(service)}%0A• *Paket*: ${encodeURIComponent(packageChoice)}%0A• *Catatan/Req*: ${encodeURIComponent(notes)}%0A%0AMohon info langkah selanjutnya. Terima kasih!`;
+
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+
+        // Portfolio Filtering Script
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const tabs = document.querySelectorAll('.portfolio-tab');
+
+            // Reset Tab styling
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-brand-500', 'text-white');
+                tab.classList.add('text-gray-400');
+            });
+
+            // Set active tab
+            document.getElementById(`tab-${category}`).classList.add('bg-brand-500', 'text-white');
+            document.getElementById(`tab-${category}`).classList.remove('text-gray-400');
+
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Preview Handlers
+        function openPreviewModal(title, description, imgUrl) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = description;
+            document.getElementById('modal-img').src = imgUrl;
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+
+        function closePreviewModal() {
+            document.getElementById('preview-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
